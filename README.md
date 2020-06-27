@@ -58,3 +58,8 @@ built upon.
 ## References
 
 https://community.hetzner.com/tutorials/install-kubernetes-cluster
+
+## License
+
+Because this tool is short and sweet, it is hereby released into the public
+domain. Do whatever you want.
