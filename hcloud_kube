@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# bash init
 set -e
 
+# default values
+HETZNER_INSTANCE_TYPE=cx21
+HETZNER_WORKER_COUNT=1
+
+# option parsing
 usage() {
 	cat <<-"EOF"
 	usage: ./hcloud_kube [<options>]
@@ -10,10 +16,6 @@ usage() {
 		-n	number of worker nodes
 	EOF
 }
-
-HETZNER_INSTANCE_TYPE=cx21
-HETZNER_WORKER_COUNT=1
-
 while getopts "t:n:h" option; do
 	case ${option} in
 	t)
@@ -33,6 +35,7 @@ while getopts "t:n:h" option; do
 done
 shift $((OPTIND-1))
 
+# require an HCLOUD_TOKEN
 if [ -z "$HCLOUD_TOKEN" ]; then
 	echo '$HCLOUD_TOKEN is not set'
 	exit 1
