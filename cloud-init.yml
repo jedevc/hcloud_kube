@@ -18,8 +18,13 @@ write_files:
       net.bridge.bridge-nf-call-iptables = 1
       net.ipv4.ip_forward = 1
       net.ipv6.conf.default.forwarding = 1
+  - path: /etc/apt/apt.conf.d/20auto-upgrades
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
 
 packages:
+  - unattended-upgrades
   - docker-ce
   - kubeadm
   - kubectl
