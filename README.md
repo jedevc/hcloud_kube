@@ -11,6 +11,15 @@ You'll need:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Other pretty standard linux utils (Bash, SSH, etc)
 
+## Quickstart
+
+Create a kubernetes cluster with 2 CX21 nodes:
+
+```bash
+$ export HCLOUD_TOKEN=<api token>
+$ ./hcloud_kube -t cx21 -n 2
+```
+
 ## Usage
 
 1. Create a new project
@@ -48,9 +57,11 @@ Command line options
 
   The hetzner instance type for each node.
 
-- `-n COUNT` (default: `1`)
+- `-n COUNT` (default: `0`)
 
   The number of hetzner workers to provision.
+
+  If set to 0, the master node is tainted to accept pods.
 
 For additional configuration, dive in, and edit the script - it's meant to be
 built upon.
